@@ -1,7 +1,7 @@
 # salarytracker
  Intuitive and secure system for tracking hours worked across multiple accounts
 
-### Features
+### Features (Node JS)
 * JWT authentication
 * PUG html rendering engine
 * Sqlite3 database
@@ -19,6 +19,7 @@
 
 
 ### Main UI
+#### Logged entries are stored independently per user (a user can only see their own logs)
 ![](https://raw.githubusercontent.com/ThomasSelvig/salarytracker/main/demo/index.png)
 
 ### Date / time selection UI
