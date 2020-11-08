@@ -1,0 +1,33 @@
+extends _bootstrap
+
+block head
+	title= "View data"
+
+block body
+	nav.navbar.navbar-light.bg-light.navbar-expand-lg
+		div.container
+			a.navbar-brand(href="/") Salary Logger
+			button.navbar-toggler(type="button", data-toggle="collapse", data-target="#collapsing_navbar")
+				span.navbar-toggler-icon
+			.navbar-collapse.collapse#collapsing_navbar
+				ul.navbar-nav.ml-auto
+					li.nav-item
+						a.nav-link(href="/logout") Logout
+	div.container.mt-5
+		table.table
+			thead
+				tr
+					th(scope="col") #
+					th(scope="col") Date
+					th(scope="col") Time
+					th(scope="col") Duration (hours)
+					th(scope="col") Pay period
+					th(scope="col") NOK / hour
+					th(scope="col") Earned
+			tbody
+				each row, index in rows
+					tr 
+						th(scope="row")= index
+						each val in row
+							td= val
+						

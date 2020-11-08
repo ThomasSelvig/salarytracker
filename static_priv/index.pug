@@ -1,0 +1,71 @@
+extends _bootstrap
+
+block head
+	title= "Salary Logger"
+	link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/pickerjs@1.2.1/dist/picker.min.css")
+	
+block body
+	nav.navbar.navbar-light.bg-light.navbar-expand-lg
+		div.container
+			a.navbar-brand(href="/") Salary Logger
+			button.navbar-toggler(type="button", data-toggle="collapse", data-target="#collapsing_navbar")
+				span.navbar-toggler-icon
+			.navbar-collapse.collapse#collapsing_navbar
+				ul.navbar-nav.ml-auto
+					li.nav-item
+						a.nav-link(href="/logout") Logout
+	div.container.my-5
+		
+		if alert
+			.alert.mb-4#alert(role="alert") !{alert.text}
+
+
+		h1.display-4.mb-4 View Entry
+		form.mb-5(action="/view")
+			.form-row
+				.form-group.col-md-6
+					label(for="inp_view_entry_month") Timeframe
+					input.form-control.js-month-picker(type="text" required="true" name="tf" id="inp_view_entry_month" placeholder="MMMM/YYYY" value="")
+			button.btn.btn-info(type="submit") View
+
+
+		h1.display-4.mb-4 Add Entry
+		form.mb-5(method="POST", action="/add_entry")
+			.form-row
+				.form-group.col-md-4
+					label(for="inp_add_entry_date") Date
+					input.form-control.js-date-picker(type="text" required="true" name="date" id="inp_add_entry_date" placeholder="DD/MM/YYYY" value="")
+				.form-group.col-md-4
+					label(for="inp_add_entry_time") Time
+					input.form-control.js-time-picker(type="text" required="true" name="time" id="inp_add_entry_time" placeholder="00:00" value="08:00")
+				.form-group.col-md-4
+					label(for="inp_add_entry_hours") Hours worked 
+					input.form-control(type="number" required="true" name="duration" id="inp_add_entry_hours" placeholder="6.5" min="0.5" max="20" step="0.5" value="8")
+			button.btn.btn-info(type="submit") Submit
+			
+
+block scripts
+	if alert
+		script $("#alert").addClass("alert-#{alert.type}")
+	
+	script(src="https://cdn.jsdelivr.net/npm/pickerjs@1.2.1/dist/picker.min.js")
+	script.
+		// view entry
+		new Picker(document.querySelector("#inp_view_entry_month"), {
+			format: "MMMM/YYYY",
+			text: {title: "Month to view records from"}
+		});
+	
+		// add entry
+		new Picker(document.querySelector("#inp_add_entry_date"), {
+			format: "DD/MM/YYYY",
+			controls: true,
+			headers: true,
+			text: {title: "What day did you work?"}
+		});
+		new Picker(document.querySelector("#inp_add_entry_time"), {
+			format: "HH:mm",
+			controls: true,
+			headers: true,
+			text: {title: "When did you start work?"}
+		});

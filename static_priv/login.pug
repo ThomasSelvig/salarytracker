@@ -1,0 +1,35 @@
+extends _bootstrap
+
+block head
+	title= "Login | Salary Logger"
+	
+block body
+	.container.mt-4
+		if alert
+			.alert.my-3#alert(role="alert") !{alert.text}
+			
+		h3.mt-5.mb-3 Login
+		form(method="POST", action="/login")
+			.form-row
+				.form-group.col-md-6
+					label(for="inp_un") Username
+					input.form-control(type="text" required="true" id="inp_un" name="un" placeholder="tom_")
+				.form-group.col-md-6
+					label(for="inp_pw") Password
+					input.form-control(type="password" required="true" id="inp_pw" name="pw" placeholder="********")
+			button.btn.btn-dark.col-md-4(type="submit") Login
+			
+		h3.mt-5.mb-3 Register
+		form(method="POST", action="/register")
+			.form-row
+				.form-group.col-md-6
+					label(for="inp_un") Username
+					input.form-control(type="text" required="true" id="inp_un" name="un" placeholder="tom_")
+				.form-group.col-md-6
+					label(for="inp_pw") Password
+					input.form-control(type="password" required="true" id="inp_pw" name="pw" placeholder="********")
+			button.btn.btn-dark.col-md-4(type="submit") Register
+
+block scripts
+	if alert
+		script $("#alert").addClass("alert-#{alert.type}")
