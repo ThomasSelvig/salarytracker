@@ -3,7 +3,7 @@
 
 ### Features (Node JS)
 * JWT authentication
-* PUG html rendering engine
+* PUG html rendering engine + Bootstrap CSS
 * Sqlite3 database
 * Credentials are stored as salted hashes
 * Logging using Morgan
@@ -28,6 +28,9 @@
 ### View logged hours' UI
 #### Uses different hourly pay depending on whether or not it's weekend
 ![](https://raw.githubusercontent.com/ThomasSelvig/salarytracker/main/demo/view_logged.png)
+
+### Mobile friendly
+![](https://raw.githubusercontent.com/ThomasSelvig/salarytracker/main/demo/mobile.png)
 
 ### Users' login credentials are stored securely using salted hashes
 ![](https://raw.githubusercontent.com/ThomasSelvig/salarytracker/main/demo/salted_hashes.png)
